@@ -1,0 +1,73 @@
+@page "/breaks"
+@using StudentPerformanceTracker.Models
+@using StudentPerformanceTracker.Services
+@inject BreakServiceHttpClient BreakServiceHttpClient
+@inject NavigationManager Navigation
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3>Manage Breaks</h3>
+        <button class="btn btn-primary" @onclick="ShowAddBreak">Add New Break</button>
+    </div>
+
+    <table class="table">
+        <thead class="table-dark">
+            <tr>
+                <th>Date</th>
+                <th>Break Type</th>
+                <th>Duration</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (breaks == null)
+            {
+                <tr>
+                    <td colspan="4">Loading...</td>
+                </tr>
+            }
+            else
+            {
+                @foreach (var studentBreak in breaks)
+                {
+                    <tr>
+                        <td>@studentBreak.Date.ToShortDateString()</td>
+                        <td>@studentBreak.BreakType</td>
+                        <td>@studentBreak.Duration minutes</td>
+                        <td>
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-sm btn-warning" style="min-width: 70px;" @onclick="() => EditBreak(studentBreak.Id)">Edit</button>
+                                <button class="btn btn-sm btn-danger" style="min-width: 70px;" @onclick="() => DeleteBreak(studentBreak.Id)">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+@code {
+    private List<Break> breaks;
+
+    protected override async Task OnInitializedAsync()
+    {
+        breaks = await BreakServiceHttpClient.GetAllAsync();
+    }
+
+    private void ShowAddBreak()
+    {
+        Navigation.NavigateTo("/addeditbreak");
+    }
+
+    private void EditBreak(string id)
+    {
+        Navigation.NavigateTo($"/addeditbreak/{id}");
+    }
+
+    private async Task DeleteBreak(string id)
+    {
+        await BreakServiceHttpClient.DeleteAsync(id);
+        breaks = await BreakServiceHttpClient.GetAllAsync(); // Refresh the list
+    }
+}

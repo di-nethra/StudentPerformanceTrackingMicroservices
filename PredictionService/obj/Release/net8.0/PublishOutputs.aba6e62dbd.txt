@@ -1,0 +1,16 @@
+/Users/dinethrex/Desktop/CW1/CourseWork1/PredictionService/bin/Release/net8.0/publish/PredictionService
+/Users/dinethrex/Desktop/CW1/CourseWork1/PredictionService/bin/Release/net8.0/publish/appsettings.Development.json
+/Users/dinethrex/Desktop/CW1/CourseWork1/PredictionService/bin/Release/net8.0/publish/appsettings.json
+/Users/dinethrex/Desktop/CW1/CourseWork1/PredictionService/bin/Release/net8.0/publish/PredictionService.dll
+/Users/dinethrex/Desktop/CW1/CourseWork1/PredictionService/bin/Release/net8.0/publish/PredictionService.deps.json
+/Users/dinethrex/Desktop/CW1/CourseWork1/PredictionService/bin/Release/net8.0/publish/PredictionService.runtimeconfig.json
+/Users/dinethrex/Desktop/CW1/CourseWork1/PredictionService/bin/Release/net8.0/publish/PredictionService.pdb
+/Users/dinethrex/Desktop/CW1/CourseWork1/PredictionService/bin/Release/net8.0/publish/Microsoft.AspNetCore.JsonPatch.dll
+/Users/dinethrex/Desktop/CW1/CourseWork1/PredictionService/bin/Release/net8.0/publish/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+/Users/dinethrex/Desktop/CW1/CourseWork1/PredictionService/bin/Release/net8.0/publish/Microsoft.AspNetCore.OpenApi.dll
+/Users/dinethrex/Desktop/CW1/CourseWork1/PredictionService/bin/Release/net8.0/publish/Microsoft.OpenApi.dll
+/Users/dinethrex/Desktop/CW1/CourseWork1/PredictionService/bin/Release/net8.0/publish/Newtonsoft.Json.dll
+/Users/dinethrex/Desktop/CW1/CourseWork1/PredictionService/bin/Release/net8.0/publish/Newtonsoft.Json.Bson.dll
+/Users/dinethrex/Desktop/CW1/CourseWork1/PredictionService/bin/Release/net8.0/publish/Swashbuckle.AspNetCore.Swagger.dll
+/Users/dinethrex/Desktop/CW1/CourseWork1/PredictionService/bin/Release/net8.0/publish/Swashbuckle.AspNetCore.SwaggerGen.dll
+/Users/dinethrex/Desktop/CW1/CourseWork1/PredictionService/bin/Release/net8.0/publish/Swashbuckle.AspNetCore.SwaggerUI.dll

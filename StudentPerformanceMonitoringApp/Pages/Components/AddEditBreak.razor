@@ -1,0 +1,72 @@
+@page "/addeditbreak/{BreakId?}"
+@using StudentPerformanceTracker.Models
+@using StudentPerformanceTracker.Services
+@inject BreakServiceHttpClient BreakServiceHttpClient
+@inject NavigationManager Navigation
+
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h3 class="card-title">@((string.IsNullOrEmpty(BreakId) ? "Add" : "Edit") + " Break")</h3>
+        </div>
+        <div class="card-body">
+            <EditForm Model="@studentBreak" OnValidSubmit="HandleValidSubmit">
+                <DataAnnotationsValidator />
+                <ValidationSummary class="alert alert-danger" />
+
+                <div class="mb-3">
+                    <label for="dateInput" class="form-label">Date:</label>
+                    <InputDate @bind-Value="studentBreak.Date" id="dateInput" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label for="breakTypeInput" class="form-label">Break Type:</label>
+                    <InputText @bind-Value="studentBreak.BreakType" id="breakTypeInput" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label for="durationInput" class="form-label">Duration (minutes):</label>
+                    <InputNumber @bind-Value="studentBreak.Duration" id="durationInput" class="form-control" />
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <button type="submit" class="btn btn-primary w-100">Save</button>
+                    </div>
+                    <div class="col-6">
+                        <button type="button" class="btn btn-secondary w-100" @onclick="Cancel">Cancel</button>
+                    </div>
+                </div>
+            </EditForm>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public string? BreakId { get; set; }
+    private Break studentBreak = new Break { Date = DateTime.Today };
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (!string.IsNullOrEmpty(BreakId))
+        {
+            studentBreak = await BreakServiceHttpClient.GetByIdAsync(BreakId) ?? new Break { Date = DateTime.Today };
+        }
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        if (!string.IsNullOrEmpty(BreakId))
+        {
+            await BreakServiceHttpClient.UpdateAsync(BreakId, studentBreak);
+        }
+        else
+        {
+            await BreakServiceHttpClient.AddAsync(studentBreak);
+        }
+
+        Navigation.NavigateTo("/breaks");
+    }
+
+    private void Cancel()
+    {
+        Navigation.NavigateTo("/breaks");
+    }
+}

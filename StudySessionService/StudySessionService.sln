@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 25.0.1706.11
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudySessionService", "StudySessionService.csproj", "{FD123AA1-64D0-484A-927E-F5DD884C47FC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FD123AA1-64D0-484A-927E-F5DD884C47FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD123AA1-64D0-484A-927E-F5DD884C47FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD123AA1-64D0-484A-927E-F5DD884C47FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD123AA1-64D0-484A-927E-F5DD884C47FC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0853C16A-79C1-4F41-9638-7C5B5AA4ABA5}
+	EndGlobalSection
+EndGlobal

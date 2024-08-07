@@ -1,0 +1,83 @@
+@page "/addeditstudysession/{StudySessionId?}"
+@using StudentPerformanceTracker.Models
+@inject StudySessionServiceHttpClient StudySessionServiceHttpClient
+@inject NavigationManager Navigation
+
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h3 class="card-title">@((string.IsNullOrEmpty(StudySessionId) ? "Add" : "Edit") + " Study Session")</h3>
+        </div>
+        <div class="card-body">
+            <EditForm Model="@studySession" OnValidSubmit="HandleValidSubmit">
+                <DataAnnotationsValidator />
+                <ValidationSummary class="alert alert-danger" />
+
+                <div class="mb-3">
+                    <label for="dateInput" class="form-label">Date:</label>
+                    <InputDate @bind-Value="studySession.Date" id="dateInput" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label for="subjectInput" class="form-label">Subject:</label>
+                    <InputSelect @bind-Value="studySession.Subject" id="subjectInput" class="form-select"
+                        placeholder="Select your subject">
+                        <option value="">Select your subject</option>
+                        <option value="Data Structures and Algorithms">Data Structures and Algorithms</option>
+                        <option value="Enterprise Application Development">Enterprise Application Development</option>
+                        <option value="Cloud Computing">Cloud Computing</option>
+                        <option value="iOS Development">iOS Development</option>
+                    </InputSelect>
+                </div>
+                <div class="mb-3">
+                    <label for="durationInput" class="form-label">Duration (hours):</label>
+                    <InputNumber @bind-Value="studySession.Duration" id="durationInput" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label for="knowledgeLevelInput" class="form-label">Knowledge Level:</label>
+                    <InputSelect @bind-Value="studySession.KnowledgeLevel" id="knowledgeLevelInput" class="form-select"
+                        placeholder="Select your current knowledge level">
+                        <option value="">Select your current knowledge level</option>
+                        <option value="Beginner">Beginner</option>
+                        <option value="Intermediate">Intermediate</option>
+                        <option value="Advanced">Advanced</option>
+                    </InputSelect>
+                </div>
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-primary flex-grow-1">Save</button>
+                    <button type="button" class="btn btn-secondary flex-grow-1" @onclick="Cancel">Cancel</button>
+                </div>
+            </EditForm>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public string StudySessionId { get; set; }
+    private StudySession studySession = new StudySession { Date = DateTime.Today };
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (!string.IsNullOrEmpty(StudySessionId))
+        {
+            studySession = await StudySessionServiceHttpClient.GetByIdAsync(StudySessionId);
+        }
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        if (string.IsNullOrEmpty(studySession.Id))
+        {
+            await StudySessionServiceHttpClient.CreateAsync(studySession);
+        }
+        else
+        {
+            await StudySessionServiceHttpClient.UpdateAsync(studySession.Id, studySession);
+        }
+        Navigation.NavigateTo("/studysessions");
+    }
+
+    private void Cancel()
+    {
+        Navigation.NavigateTo("/studysessions");
+    }
+}

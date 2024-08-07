@@ -1,0 +1,6 @@
+@BreakService_HostAddress = http://localhost:5085
+
+GET {{BreakService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,81 @@
+{
+  "Files": [
+    {
+      "Id": "/Users/dinethrex/Desktop/CW1/CourseWork1/StudentPerformanceMonitoringApp/obj/Debug/net7.0/scopedcss/projectbundle/StudentPerformanceMonitoringApp.bundle.scp.css",
+      "PackagePath": "staticwebassets/StudentPerformanceMonitoringApp.bundle.scp.css"
+    },
+    {
+      "Id": "/Users/dinethrex/Desktop/CW1/CourseWork1/StudentPerformanceMonitoringApp/wwwroot/Images/student.png",
+      "PackagePath": "staticwebassets/Images/student.png"
+    },
+    {
+      "Id": "/Users/dinethrex/Desktop/CW1/CourseWork1/StudentPerformanceMonitoringApp/wwwroot/css/bootstrap/bootstrap.min.css",
+      "PackagePath": "staticwebassets/css/bootstrap/bootstrap.min.css"
+    },
+    {
+      "Id": "/Users/dinethrex/Desktop/CW1/CourseWork1/StudentPerformanceMonitoringApp/wwwroot/css/bootstrap/bootstrap.min.css.map",
+      "PackagePath": "staticwebassets/css/bootstrap/bootstrap.min.css.map"
+    },
+    {
+      "Id": "/Users/dinethrex/Desktop/CW1/CourseWork1/StudentPerformanceMonitoringApp/wwwroot/css/open-iconic/FONT-LICENSE",
+      "PackagePath": "staticwebassets/css/open-iconic"
+    },
+    {
+      "Id": "/Users/dinethrex/Desktop/CW1/CourseWork1/StudentPerformanceMonitoringApp/wwwroot/css/open-iconic/ICON-LICENSE",
+      "PackagePath": "staticwebassets/css/open-iconic"
+    },
+    {
+      "Id": "/Users/dinethrex/Desktop/CW1/CourseWork1/StudentPerformanceMonitoringApp/wwwroot/css/open-iconic/README.md",
+      "PackagePath": "staticwebassets/css/open-iconic/README.md"
+    },
+    {
+      "Id": "/Users/dinethrex/Desktop/CW1/CourseWork1/StudentPerformanceMonitoringApp/wwwroot/css/open-iconic/font/css/open-iconic-bootstrap.min.css",
+      "PackagePath": "staticwebassets/css/open-iconic/font/css/open-iconic-bootstrap.min.css"
+    },
+    {
+      "Id": "/Users/dinethrex/Desktop/CW1/CourseWork1/StudentPerformanceMonitoringApp/wwwroot/css/open-iconic/font/fonts/open-iconic.eot",
+      "PackagePath": "staticwebassets/css/open-iconic/font/fonts/open-iconic.eot"
+    },
+    {
+      "Id": "/Users/dinethrex/Desktop/CW1/CourseWork1/StudentPerformanceMonitoringApp/wwwroot/css/open-iconic/font/fonts/open-iconic.otf",
+      "PackagePath": "staticwebassets/css/open-iconic/font/fonts/open-iconic.otf"
+    },
+    {
+      "Id": "/Users/dinethrex/Desktop/CW1/CourseWork1/StudentPerformanceMonitoringApp/wwwroot/css/open-iconic/font/fonts/open-iconic.svg",
+      "PackagePath": "staticwebassets/css/open-iconic/font/fonts/open-iconic.svg"
+    },
+    {
+      "Id": "/Users/dinethrex/Desktop/CW1/CourseWork1/StudentPerformanceMonitoringApp/wwwroot/css/open-iconic/font/fonts/open-iconic.ttf",
+      "PackagePath": "staticwebassets/css/open-iconic/font/fonts/open-iconic.ttf"
+    },
+    {
+      "Id": "/Users/dinethrex/Desktop/CW1/CourseWork1/StudentPerformanceMonitoringApp/wwwroot/css/open-iconic/font/fonts/open-iconic.woff",
+      "PackagePath": "staticwebassets/css/open-iconic/font/fonts/open-iconic.woff"
+    },
+    {
+      "Id": "/Users/dinethrex/Desktop/CW1/CourseWork1/StudentPerformanceMonitoringApp/wwwroot/css/site.css",
+      "PackagePath": "staticwebassets/css/site.css"
+    },
+    {
+      "Id": "/Users/dinethrex/Desktop/CW1/CourseWork1/StudentPerformanceMonitoringApp/wwwroot/favicon.png",
+      "PackagePath": "staticwebassets/favicon.png"
+    },
+    {
+      "Id": "obj/Debug/net7.0/staticwebassets/msbuild.StudentPerformanceMonitoringApp.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj/Debug/net7.0/staticwebassets/msbuild.build.StudentPerformanceMonitoringApp.props",
+      "PackagePath": "build\\StudentPerformanceMonitoringApp.props"
+    },
+    {
+      "Id": "obj/Debug/net7.0/staticwebassets/msbuild.buildMultiTargeting.StudentPerformanceMonitoringApp.props",
+      "PackagePath": "buildMultiTargeting\\StudentPerformanceMonitoringApp.props"
+    },
+    {
+      "Id": "obj/Debug/net7.0/staticwebassets/msbuild.buildTransitive.StudentPerformanceMonitoringApp.props",
+      "PackagePath": "buildTransitive\\StudentPerformanceMonitoringApp.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

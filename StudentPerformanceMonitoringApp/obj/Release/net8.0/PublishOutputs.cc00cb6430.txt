@@ -1,0 +1,7 @@
+/Users/dinethrex/Desktop/CW1/CourseWork1/StudentPerformanceMonitoringApp/bin/Release/net8.0/publish/StudentPerformanceMonitoringApp
+/Users/dinethrex/Desktop/CW1/CourseWork1/StudentPerformanceMonitoringApp/bin/Release/net8.0/publish/appsettings.Development.json
+/Users/dinethrex/Desktop/CW1/CourseWork1/StudentPerformanceMonitoringApp/bin/Release/net8.0/publish/appsettings.json
+/Users/dinethrex/Desktop/CW1/CourseWork1/StudentPerformanceMonitoringApp/bin/Release/net8.0/publish/StudentPerformanceMonitoringApp.dll
+/Users/dinethrex/Desktop/CW1/CourseWork1/StudentPerformanceMonitoringApp/bin/Release/net8.0/publish/StudentPerformanceMonitoringApp.deps.json
+/Users/dinethrex/Desktop/CW1/CourseWork1/StudentPerformanceMonitoringApp/bin/Release/net8.0/publish/StudentPerformanceMonitoringApp.runtimeconfig.json
+/Users/dinethrex/Desktop/CW1/CourseWork1/StudentPerformanceMonitoringApp/bin/Release/net8.0/publish/StudentPerformanceMonitoringApp.pdb

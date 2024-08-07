@@ -1,0 +1,61 @@
+@page "/predictions"
+@using StudentPerformanceTracker.Services
+@using StudentPerformanceTracker.Models
+@inject PredictionServiceHttpClient predictionServiceHttpClient
+
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title mb-4">Grade Predictions</h3>
+            <input type="date" value="@futureDate.ToString("yyyy-MM-dd")" @onchange="OnDateChanged" class="form-control mb-4" />
+
+            @foreach (var subject in Subjects)
+            {
+                <div class="mb-4">
+                    <h5>@subject:</h5>
+                    @if (predictions.TryGetValue(subject, out var prediction))
+                    {
+                        <p class="mb-1">Predicted Grade for @futureDate.ToShortDateString(): <strong>@prediction.PredictedGrade</strong></p>
+                        <div class="progress" style="height: 20px;">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: @prediction.GradeProgress%" aria-valuenow="@prediction.GradeProgress" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    }
+                    else
+                    {
+                        <p>Loading...</p>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    private DateTime futureDate = DateTime.Now;
+    private readonly string[] Subjects = new[] { "Data Structures and Algorithms", "Enterprise Application Development", "Cloud Computing", "iOS Development" };
+    private Dictionary<string, Prediction> predictions = new Dictionary<string, Prediction>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadPredictions();
+    }
+
+    private async Task OnDateChanged(ChangeEventArgs e)
+    {
+        if (DateTime.TryParse(e.Value.ToString(), out var newDate))
+        {
+            futureDate = newDate;
+            await LoadPredictions();
+        }
+    }
+
+    private async Task LoadPredictions()
+    {
+        predictions.Clear();
+        foreach (var subject in Subjects)
+        {
+            var prediction = await predictionServiceHttpClient.GetPredictionAsync(subject, futureDate);
+            predictions[subject] = prediction;
+        }
+    }
+}

@@ -1,0 +1,127 @@
+@page "/reports"
+@using StudentPerformanceTracker.Models
+@using StudentPerformanceTracker.Services
+@inject StudySessionServiceHttpClient StudySessionServiceHttpClient
+@inject BreakServiceHttpClient BreakServiceHttpClient
+
+<div class="container mt-5">
+    <h3 class="mb-4">Weekly Report</h3>
+
+    @foreach (var day in Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>().OrderBy(d => d == DayOfWeek.Sunday ? 7 : (int)d))
+    {
+        var studySessionsForDay = StudySessionsByDay.ContainsKey(day) ? StudySessionsByDay[day] : new List<StudySession>();
+        var breaksForDay = BreaksByDay.ContainsKey(day) ? BreaksByDay[day] : new List<Break>();
+        var totalStudyHours = studySessionsForDay.Sum(s => s.Duration);
+        var progressPercentage = (double)totalStudyHours / 4.0 * 100.0; // daily study goal is 4 hours
+
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">@day</h4>
+            </div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="card mb-4">
+                            <div class="card-header bg-secondary text-white">
+                                <h5 class="mb-0">Study Sessions</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Date</th>
+                                                <th>Subject</th>
+                                                <th>Duration</th>
+                                                <th>Knowledge Level</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @if (studySessionsForDay.Any())
+                                            {
+                                                @foreach (var session in studySessionsForDay)
+                                                {
+                                                    <tr>
+                                                        <td>@session.Date.ToShortDateString()</td>
+                                                        <td>@session.Subject</td>
+                                                        <td>@session.Duration hours</td>
+                                                        <td>@session.KnowledgeLevel</td>
+                                                    </tr>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <tr>
+                                                    <td colspan="4" class="text-center text-muted">No study sessions recorded</td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card mb-4">
+                            <div class="card-header bg-secondary text-white">
+                                <h5 class="mb-0">Breaks</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Date</th>
+                                                <th>Break Type</th>
+                                                <th>Duration</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @if (breaksForDay.Any())
+                                            {
+                                                @foreach (var studentBreak in breaksForDay)
+                                                {
+                                                    <tr>
+                                                        <td>@studentBreak.Date.ToShortDateString()</td>
+                                                        <td>@studentBreak.BreakType</td>
+                                                        <td>@studentBreak.Duration minutes</td>
+                                                    </tr>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <tr>
+                                                    <td colspan="3" class="text-center text-muted">No breaks recorded</td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: @progressPercentage%">@totalStudyHours / 4 hours completed</div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    private Dictionary<DayOfWeek, List<StudySession>> StudySessionsByDay = new();
+    private Dictionary<DayOfWeek, List<Break>> BreaksByDay = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var allStudySessions = await StudySessionServiceHttpClient.GetAllAsync();
+        var allBreaks = await BreakServiceHttpClient.GetAllAsync();
+
+        StudySessionsByDay = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>()
+            .ToDictionary(day => day, day => allStudySessions.Where(s => s.Date.DayOfWeek == day).ToList());
+
+        BreaksByDay = Enum.GetValues(typeof(DayOfWeek)).Cast<DayOfWeek>()
+            .ToDictionary(day => day, day => allBreaks.Where(b => b.Date.DayOfWeek == day).ToList());
+    }
+}
